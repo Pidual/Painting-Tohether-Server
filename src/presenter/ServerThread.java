@@ -5,15 +5,19 @@ import java.net.Socket;
 
 public class ServerThread extends Thread{
 
-    // private Models modelo
+    private DataManagement data;
     private DataInputStream input;
     private DataOutputStream output;
 
     public ServerThread(Socket socket) throws IOException {
-        //modelo - new modelo
+
+        data = new DataManagement();
         output = new DataOutputStream(socket.getOutputStream());
+        input = new DataInputStream(socket.getInputStream());
         while (true){
-           String texto = input.readUTF();
+            String text = input.readUTF();
+            data.addDataToTree(text);
+            output.writeUTF(data.getData());
         }
     }
 }
