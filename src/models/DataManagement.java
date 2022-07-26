@@ -17,7 +17,7 @@ public class DataManagement {
         refinedText = refinedText.replace("]","");
         refinedText = refinedText.replaceAll("\\s","");
         addToTree(refinedText.split(","));
-        System.out.println(cordTree.inOrder());
+        System.out.println("COORDEANDAS RECIBIDAS");
     }
 
     private void addToTree(String[] list) {
